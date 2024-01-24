@@ -8,9 +8,9 @@ const Header = () => {
   };
 
   return (
-    <header className="min-h-[88px] flex items-center p-9 border-b mb-6">
-      <nav className="flex items-center w-full">
-        <span className="text-2xl font-[600]">Dashboard</span>
+    <header className="min-h-[88px] flex items-center p-4 md:p-9 border-b mb-6">
+      <nav className="flex items-center w-full gap-1">
+        <span className="text-base sm:text-2xl font-[600]">Dashboard</span>
         <form action="/" className="ml-auto mr-4 px-4 hidden lg:block">
           <label
             htmlFor="search"
@@ -76,7 +76,7 @@ const Header = () => {
         </span>
 
         {/* MOBILE MENU PROFILE*/}
-        <div className="xl:hidden ml-4 border-gray-500 grid place-items-center border rounded-full p-1">
+        <div className="xl:hidden sm:grid hidden ml-4 border-gray-500 place-items-center border rounded-full p-1">
           <img
             src="/icons/profile.png"
             alt="Profile Icon"
