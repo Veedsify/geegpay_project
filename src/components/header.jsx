@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { ChevronDownIcon, LucideMenu } from "lucide-react";
+import { ChevronDownIcon, LucideMenu, LucideSearch, X } from "lucide-react";
 import MyCalendar from "./sub/calender";
 import { useCalendarContext } from "../libs/calendarcontext";
+import { useSearchBarContext, useSideBarContext } from "../libs/context";
 const Header = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showCalendar, setCalendar] = useState(false);
   const { selectedDate } = useCalendarContext();
+  const { active, setActive } = useSideBarContext();
+  const { setSearchActive } = useSearchBarContext();
 
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
@@ -14,6 +17,13 @@ const Header = () => {
     setCalendar(!showCalendar);
   };
 
+  const toggleSideBar = () => {
+    setActive();
+  };
+
+  const toggleSearchOpen = () => {
+    setSearchActive(true);
+  };
   return (
     <header className="min-h-[88px] flex items-center p-4 md:p-9 border-b mb-6">
       <nav className="flex items-center w-full gap-1">
@@ -77,7 +87,7 @@ const Header = () => {
             )}
           </li>
           <li className="relative border p-1 rounded-full">
-            <div className="flex items-center gap-x-3">
+            <div className="flex items-center gap-x-3  cursor-pointer">
               <img
                 src="/icons/profile.png"
                 alt="Profile Icon"
@@ -94,12 +104,21 @@ const Header = () => {
           </li>
         </ul>
         {/* MENU BUTTON */}
-        <span className="ml-auto block xl:hidden">
-          <LucideMenu size={30} />
+        <span
+          className="ml-auto block lg:hidden cursor-pointer mr-3"
+          onClick={toggleSearchOpen}
+        >
+          <LucideSearch size={25} />
+        </span>
+        <span
+          className="block md:hidden cursor-pointer"
+          onClick={toggleSideBar}
+        >
+          {active ? <X size={30} /> : <LucideMenu size={30} />}
         </span>
 
         {/* MOBILE MENU PROFILE*/}
-        <div className="xl:hidden sm:grid hidden ml-4 border-gray-500 place-items-center border rounded-full p-1">
+        <div className="xl:hidden sm:grid hidden ml-4 border-gray-500 place-items-center border rounded-full p-1 cursor-pointer">
           <img
             src="/icons/profile.png"
             alt="Profile Icon"

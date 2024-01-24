@@ -6,7 +6,7 @@ const SalesTrends = () => {
       <div className="flex items-center justify-between mb-6 gap-1">
         <h1 className="font-[600] text-base md:text-2xl">Sales Trends</h1>
         <div className="flex items-center gap-2 md:gap-4 flex-wrap justify-end">
-          <p>Sort By</p>
+          <p className="hidden sm:block">Sort By</p>
           <select
             name="sort"
             id="sort"

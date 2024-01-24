@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useInvoiceContext } from "../../libs/context";
 
 const LastOrders = () => {
+  const { setInvoiceActive } = useInvoiceContext();
+  const toggleInvoiceShow = () => {
+    setInvoiceActive(true);
+  };
   return (
     <div className="bg-white border rounded-xl shadow-sm p-4 col-span-2 md:col-span-3">
       <div className="flex justify-between items-center mb-4">
@@ -46,7 +51,10 @@ const LastOrders = () => {
                 <span className="text-[#34CAA5]">Paid</span>
               </td>
               <td className="p-4 whitespace-pre border-b ">
-                <span className="flex items-center">
+                <span
+                  onClick={toggleInvoiceShow}
+                  className="flex items-center cursor-pointer"
+                >
                   <img src="/icons/table/invoice.png" alt="" />
                   <span className="ml-2 inline-block mr-2">View</span>
                 </span>
@@ -67,7 +75,10 @@ const LastOrders = () => {
                 <span className="text-[#FF0000]">Refund</span>
               </td>
               <td className="p-4 whitespace-pre border-b ">
-                <span className="flex items-center">
+                <span
+                  onClick={toggleInvoiceShow}
+                  className="flex items-center cursor-pointer"
+                >
                   <img src="/icons/table/invoice.png" alt="" />
                   <span className="ml-2 inline-block mr-2">View</span>
                 </span>
@@ -90,7 +101,10 @@ const LastOrders = () => {
                 <span className="text-[#34CAA5]">Paid</span>
               </td>
               <td className="p-4 whitespace-pre border-b ">
-                <span className="flex items-center">
+                <span
+                  onClick={toggleInvoiceShow}
+                  className="flex items-center cursor-pointer"
+                >
                   <img src="/icons/table/invoice.png" alt="" />
                   <span className="ml-2 inline-block mr-2">View</span>
                 </span>
@@ -111,7 +125,10 @@ const LastOrders = () => {
                 <span className="text-[#FF0000]">Refund</span>
               </td>
               <td className="p-4 whitespace-pre border-b ">
-                <span className="flex items-center">
+                <span
+                  onClick={toggleInvoiceShow}
+                  className="flex items-center cursor-pointer"
+                >
                   <img src="/icons/table/invoice.png" alt="" />
                   <span className="ml-2 inline-block mr-2">View</span>
                 </span>
@@ -130,7 +147,10 @@ const LastOrders = () => {
                 <span className="text-[#34CAA5]">Paid</span>
               </td>
               <td className="p-4 whitespace-pre">
-                <span className="flex items-center">
+                <span
+                  onClick={toggleInvoiceShow}
+                  className="flex items-center cursor-pointer"
+                >
                   <img src="/icons/table/invoice.png" alt="" />
                   <span className="ml-2 inline-block mr-2">View</span>
                 </span>

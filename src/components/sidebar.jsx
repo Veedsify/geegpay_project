@@ -1,3 +1,4 @@
+import { useSideBarContext } from "../libs/context";
 import LightAndDarkToggle from "./sub/lightanddarktoggle";
 import Links from "./sub/links";
 
@@ -43,9 +44,14 @@ const endLinks = [
   },
 ];
 const SideBar = () => {
+  const { active } = useSideBarContext();
   return (
     <>
-      <aside className="w-16 md:w-20 border min-h-screen absolute top-0 left-0 flex flex-col">
+      <aside
+        className={`fixed md:w-20 border bg-white min-h-screen md:absolute top-0 md:left-0 flex flex-col transition-all duration-300 ${
+          active ? "-left-0" : "-left-full"
+        }`}
+      >
         <div className="p-3 md:p-5">
           <img src="/Vector.png" alt="dashboard logo" width={40} />
         </div>
