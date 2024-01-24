@@ -1,6 +1,6 @@
 const SideAnalytics = () => {
   return (
-    <div className="grid grid-cols-2 gap-3 md:gap-6 col-span-2">
+    <div className="grid grid-cols-2 gap-6 col-span-2">
       <div className="bg-white border rounded-xl shadow-sm p-4">
         <div className="flex mb-4 justify-between items-center flex-wrap">
           <img src="/icons/analytics/order.png" alt="Order icon" />
