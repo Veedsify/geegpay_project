@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { ChevronDownIcon, LucideMenu } from "lucide-react";
 import MyCalendar from "./sub/calender";
+import { useCalendarContext } from "../libs/calendarcontext";
 const Header = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showCalendar, setCalendar] = useState(false);
+  const { selectedDate } = useCalendarContext();
 
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
@@ -11,28 +13,6 @@ const Header = () => {
   const toggleCalendar = () => {
     setCalendar(!showCalendar);
   };
-
-  // WINDOWS CLOSE
-  const myRef = useRef();
-  const clRef = useRef();
-  const clComp = useRef();
-
-  const handleClick = (event) => {
-    if (myRef.current && !myRef.current.contains(event.target) && clComp.current && !clComp.current.contains(event.target)) {
-      setCalendar(false);
-    }
-    if (clRef.current && !clRef.current.contains(event.target)) {
-      setShowNotifications(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("click", handleClick);
-
-    return () => {
-      window.removeEventListener("click", handleClick);
-    };
-  }, []);
 
   return (
     <header className="min-h-[88px] flex items-center p-4 md:p-9 border-b mb-6">
@@ -55,19 +35,21 @@ const Header = () => {
         </form>
         {/* Calendar */}
         <div className="mr-2 px-4 hidden lg:block relative">
-          <p
-            ref={myRef}
+          <div
             onClick={toggleCalendar}
             className="flex gap-2 py-2 items-center cursor-pointer"
           >
             <img src="/icons/calender.png" alt="Calendar Icon" />
-            <p className="select-none text-[14px]">November 15, 2023</p>
-          </p>
+            <p className="select-none text-[14px]">
+              {selectedDate.toLocaleString("default", {
+                month: "long",
+                year: "numeric",
+                day: "numeric",
+              })}
+            </p>
+          </div>
           {showCalendar && (
-            <div
-              className="absolute right-0 mt-2 bg-white rounded-md shadow-lg py-2"
-              ref={clComp}
-            >
+            <div className="absolute right-0 mt-2 bg-white rounded-md shadow-lg py-2">
               <MyCalendar />
             </div>
           )}
@@ -78,7 +60,6 @@ const Header = () => {
               src="/icons/notification_icon.png"
               alt="Notification Icon"
               className="cursor-pointer"
-              ref={clRef}
               onClick={toggleNotifications}
             />
             {showNotifications && (
