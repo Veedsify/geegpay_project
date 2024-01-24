@@ -5,7 +5,7 @@ const SalesTrends = () => {
     <div className="bg-white border rounded-xl shadow-sm p-4 col-span-2 xl:col-span-3 xl:mb-0">
       <div className="flex items-center justify-between mb-6 gap-1">
         <h1 className="font-[600] text-base md:text-2xl">Sales Trends</h1>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4 flex-wrap justify-end">
           <p>Sort By</p>
           <select
             name="sort"

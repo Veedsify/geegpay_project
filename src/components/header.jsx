@@ -74,6 +74,15 @@ const Header = () => {
         <span className="ml-auto block xl:hidden">
           <LucideMenu size={30} />
         </span>
+
+        {/* MOBILE MENU PROFILE*/}
+        <div className="xl:hidden ml-4 border-gray-500 grid place-items-center border rounded-full p-1">
+          <img
+            src="/icons/profile.png"
+            alt="Profile Icon"
+            className="cursor-pointer"
+          />
+        </div>
       </nav>
     </header>
   );
