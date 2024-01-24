@@ -1,11 +1,38 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDownIcon, LucideMenu } from "lucide-react";
+import MyCalendar from "./sub/calender";
 const Header = () => {
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showCalendar, setCalendar] = useState(false);
 
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
   };
+  const toggleCalendar = () => {
+    setCalendar(!showCalendar);
+  };
+
+  // WINDOWS CLOSE
+  const myRef = useRef();
+  const clRef = useRef();
+  const clComp = useRef();
+
+  const handleClick = (event) => {
+    if (myRef.current && !myRef.current.contains(event.target) && clComp.current && !clComp.current.contains(event.target)) {
+      setCalendar(false);
+    }
+    if (clRef.current && !clRef.current.contains(event.target)) {
+      setShowNotifications(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", handleClick);
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
+  }, []);
 
   return (
     <header className="min-h-[88px] flex items-center p-4 md:p-9 border-b mb-6">
@@ -21,35 +48,50 @@ const Header = () => {
               type="search"
               name="search"
               id="search"
-              className="outline-none bg-none"
+              className="outline-none bg-none w-full"
               placeholder="Search"
             />
           </label>
         </form>
         {/* Calendar */}
-        <form action="" className="mr-2 px-4 hidden lg:block ">
-          <label
-            htmlFor="calendar"
-            className="flex gap-2 items-center cursor-pointer"
+        <div className="mr-2 px-4 hidden lg:block relative">
+          <p
+            ref={myRef}
+            onClick={toggleCalendar}
+            className="flex gap-2 py-2 items-center cursor-pointer"
           >
             <img src="/icons/calender.png" alt="Calendar Icon" />
             <p className="select-none text-[14px]">November 15, 2023</p>
-          </label>
-          <input type="date" name="calendar" id="calendar" className="hidden" />
-        </form>
+          </p>
+          {showCalendar && (
+            <div
+              className="absolute right-0 mt-2 bg-white rounded-md shadow-lg py-2"
+              ref={clComp}
+            >
+              <MyCalendar />
+            </div>
+          )}
+        </div>
         <ul className="mr-2 px-3 hidden xl:flex items-center gap-x-8 ">
           <li className="relative">
             <img
               src="/icons/notification_icon.png"
               alt="Notification Icon"
               className="cursor-pointer"
+              ref={clRef}
               onClick={toggleNotifications}
             />
             {showNotifications && (
-              <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg">
-                <div className="p-2">Notification 1</div>
-                <div className="p-2">Notification 2</div>
-                <div className="p-2">Notification 3</div>
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2">
+                <div className="p-2 text-sm hover:bg-[#34CAA5] cursor-pointer mb-2">
+                  Notification 1
+                </div>
+                <div className="p-2 text-sm hover:bg-[#34CAA5] cursor-pointer mb-2">
+                  Notification 2
+                </div>
+                <div className="p-2 text-sm hover:bg-[#34CAA5] cursor-pointer">
+                  Notification 3
+                </div>
               </div>
             )}
           </li>

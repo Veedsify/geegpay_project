@@ -1,0 +1,9 @@
+.react-calendar__tile--active {
+    background: #34CAA5 !important;
+    color: #fff;
+    border-radius: 5px !important;
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    -ms-border-radius: 5px !important;
+    -o-border-radius: 5px !important;
+}
