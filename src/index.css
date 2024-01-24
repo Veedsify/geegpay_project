@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --font-family-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+img {
+  /* display: block; */
+  max-width: 100%;
+}
+
+* {
+  font-family: var(--font-family-sans)
+}
+
+body {
+  background-color: #fafafa;
+  font-family: var(--font-family-sans)
+}
