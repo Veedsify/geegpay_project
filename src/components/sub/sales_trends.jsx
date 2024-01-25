@@ -10,7 +10,7 @@ const SalesTrends = () => {
           <select
             name="sort"
             id="sort"
-            className="md:p-2 p-1 rounded-3xl border outline-none ml-auto"
+            className="md:p-2 p-1 rounded-3xl border outline-none ml-auto bg-white"
           >
             <option value="this_week">This Week</option>
             <option value="this_month">This Month</option>
