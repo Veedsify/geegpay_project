@@ -45,7 +45,7 @@ const Header = () => {
     setSearchActive(true);
   };
   return (
-    <header className="min-h-[88px] flex items-center p-4 md:p-9 border-b mb-6">
+    <header className="min-h-[88px] flex items-center p-4 md:p-7 2xl:p-9 border-b mb-6">
       <nav className="flex items-center w-full gap-1">
         <span className="text-base sm:text-2xl font-[600]">Dashboard</span>
         <form action="/" className="ml-auto mr-4 px-4 hidden lg:block">
