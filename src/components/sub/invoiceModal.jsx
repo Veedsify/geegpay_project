@@ -35,7 +35,7 @@ const InvoiceModal = () => {
             <X size={30} />
           </span>
         </div>
-        <div className="relative flex flex-col gap-3 sm:flex-row sm:flex-wrap overflow-y-auto max-h-[400px]">
+        <div className="relative flex flex-col gap-3 sm:flex-row sm:flex-wrap overflow-y-auto max-h-[400px] lg:max-h-[700px]">
           <div className="bg-white rounded-lg md:w-96 sm:px-6 px-1 m-2 py-8 max-w-lg mx-auto mt-8 xs-width">
             <h1 className="font-bold text-2xl my-4 text-center text-[#34CAA5]">
               Geegpay Services
