@@ -1,10 +1,25 @@
 import { X } from "lucide-react";
 import { useInvoiceContext } from "../../libs/context";
+import { useEffect } from "react";
 const InvoiceModal = () => {
   const { invoiceActive, setInvoiceActive } = useInvoiceContext();
   const toggleInvoiceClose = () => {
     setInvoiceActive(false);
   };
+  useEffect(() => {
+    if (invoiceActive) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      if (invoiceActive) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "unset";
+      }
+    };
+  }, [invoiceActive]);
   return (
     <div
       className={`fixed w-full min-h-screen bg-black bg-opacity-10 z-50 top-0 left-0 grid place-items-center duration-300 ${
@@ -20,13 +35,13 @@ const InvoiceModal = () => {
             <X size={30} />
           </span>
         </div>
-        <div className="relative flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <div className="bg-white rounded-lg md:w-96 sm:px-6 px-2 py-8 max-w-md mx-auto mt-8">
+        <div className="relative flex flex-col gap-3 sm:flex-row sm:flex-wrap overflow-y-auto max-h-[400px]">
+          <div className="bg-white rounded-lg md:w-96 sm:px-6 px-1 m-2 py-8 max-w-lg mx-auto mt-8 xs-width">
             <h1 className="font-bold text-2xl my-4 text-center text-[#34CAA5]">
               Geegpay Services
             </h1>
             <hr className="mb-2" />
-            <div className="flex justify-between mb-6">
+            <div className="flex justify-between gap-3 mb-6">
               <h1 className="text-lg font-bold">Invoice</h1>
               <div className="text-gray-700">
                 <div>Date: Nov 15, 2023</div>

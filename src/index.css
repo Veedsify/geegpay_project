@@ -20,3 +20,9 @@ body {
   background-color: #fafafa;
   font-family: var(--font-family-sans)
 }
+
+@media (min-width: 300px) {
+  .xs-width {
+    width: 280px;
+  }
+}
