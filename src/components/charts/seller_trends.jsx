@@ -21,8 +21,8 @@ const options = {
           size: 12,
         },
       },
-    grid: {
-          borderDash: [5, 5], // Set to create dashed grid lines
+      grid: {
+        borderDash: [5, 5], // Set to create dashed grid lines
         display: true,
       },
     },
@@ -77,7 +77,13 @@ const data = {
         "26.0",
       ],
       borderRadius: "100",
-      backgroundColor: "#34CAA51A",
+      backgroundColor: (context) => {
+        const ctx = context.chart.ctx;
+        const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(0, "#34CAA5");
+        gradient.addColorStop(1, "#34caa43e");
+        return gradient;
+      },
       hoverBackgroundColor: "#34CAA5",
     },
   ],
