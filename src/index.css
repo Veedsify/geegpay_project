@@ -21,6 +21,32 @@ body {
   font-family: var(--font-family-sans)
 }
 
+
+.dark-mode {
+  background: #03141d;
+}
+
+.dark-mode * {
+  border-color: #ffffff1f;
+  outline-color: #00000049;
+}
+
+.dark-mode p,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode div,
+.dark-mode span {
+  color: #f3f3f3;
+}
+
+td .paid {
+  color: #34CAA5;
+}
+
+td .refunded {
+  color: #FF2000;
+}
+
 @media (min-width: 300px) {
   .xs-width {
     width: 280px;

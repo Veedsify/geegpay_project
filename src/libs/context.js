@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export const useSideBarContext = create((set) => ({
     active: false,
@@ -13,4 +14,11 @@ export const useSearchBarContext = create((set) => ({
 export const useInvoiceContext = create((set) => ({
     invoiceActive: false,
     setInvoiceActive: (toggle) => set(() => ({ invoiceActive: toggle })),
+}));
+
+export const useModeContext = create(persist((set) => ({
+    mode: 'light',
+    setMode: (mode) => set(() => ({ mode })),
+}), {
+    name: 'mode-storage', // Name for the localStorage key
 }));

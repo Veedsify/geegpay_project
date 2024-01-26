@@ -1,7 +1,14 @@
+import { useModeContext } from "../../libs/context";
+
 const SideAnalytics = () => {
+  const { mode } = useModeContext();
   return (
     <div className="grid grid-cols-2 col-span-2 gap-2 md:gap-6">
-      <div className="bg-white border rounded-xl shadow-sm p-4">
+      <div
+        className={`duration-500 transition-all ${
+          mode === "light" ? "bg-white text-black" : "bg-[#03141d] text-white"
+        }bg-white border rounded-xl shadow-sm p-4`}
+      >
         <div className="flex mb-4 justify-between items-center flex-wrap">
           <img src="/icons/analytics/order.png" alt="Order icon" />
           <img src="/icons/ordergraph.png" alt="" />
@@ -16,7 +23,11 @@ const SideAnalytics = () => {
           <p className="text-xs md:text-sm">vs. previous month</p>
         </div>
       </div>
-      <div className="bg-white border rounded-xl shadow-sm p-4">
+      <div
+        className={`duration-500 transition-all ${
+          mode === "light" ? "bg-white text-black" : "bg-[#03141d] text-white"
+        }bg-white border rounded-xl shadow-sm p-4`}
+      >
         <div className="flex mb-4 justify-between items-center flex-wrap">
           <img src="/icons/analytics/refund.png" alt="" />
           <img src="/icons/redgraph.png" alt="" />
@@ -31,7 +42,11 @@ const SideAnalytics = () => {
           <p className="text-xs md:text-sm">vs. previous month</p>
         </div>
       </div>
-      <div className="bg-white border rounded-xl shadow-sm p-4">
+      <div
+        className={`duration-500 transition-all ${
+          mode === "light" ? "bg-white text-black" : "bg-[#03141d] text-white"
+        }bg-white border rounded-xl shadow-sm p-4`}
+      >
         <div className="flex mb-4 justify-between items-center flex-wrap">
           <img src="/icons/analytics/averagesales.png" alt="" />
           <img src="/icons/redgraph.png" alt="" />
@@ -46,7 +61,11 @@ const SideAnalytics = () => {
           <p className="text-xs md:text-sm">vs. previous month</p>
         </div>
       </div>
-      <div className="bg-white border rounded-xl shadow-sm p-4">
+      <div
+        className={`duration-500 transition-all ${
+          mode === "light" ? "bg-white text-black" : "bg-[#03141d] text-white"
+        }bg-white border rounded-xl shadow-sm p-4`}
+      >
         <div className="flex mb-4 justify-between items-center flex-wrap">
           <img src="/icons/analytics/income.png" alt="" />
           <img src="/icons/ordergraph.png" alt="" />

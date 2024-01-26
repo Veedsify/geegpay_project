@@ -1,4 +1,4 @@
-import { useSideBarContext } from "../libs/context";
+import { useModeContext, useSideBarContext } from "../libs/context";
 import LightAndDarkToggle from "./sub/lightanddarktoggle";
 import Links from "./sub/links";
 
@@ -45,10 +45,13 @@ const endLinks = [
 ];
 const SideBar = () => {
   const { active } = useSideBarContext();
+  const { mode } = useModeContext();
   return (
     <>
       <aside
-        className={`fixed md:w-20 border bg-white min-h-screen md:absolute top-0 md:left-0 flex flex-col transition-all duration-300 ${
+        className={`fixed md:w-20 border ${
+          mode === "light" ? "bg-white" : "dark-mode"
+        }  min-h-screen md:absolute top-0 md:left-0 flex flex-col transition-all duration-300 ${
           active ? "-left-0" : "-left-full"
         }`}
       >
